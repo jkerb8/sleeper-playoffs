@@ -12,7 +12,7 @@ function deploySite() {
     BUILD_OUTPUT="$(ng build $options)"
     
     echo "Copying files to $destination..."
-    aws s3 sync dist/sleeper-playoffs/. $destination $profile
+    aws s3 sync dist/sleeper-playoffs/browser/. $destination $profile
     
     # echo "Invalidating CloudFront cache..."
     # aws cloudfront create-invalidation --distribution-id $distribution --paths "/*" $profile
