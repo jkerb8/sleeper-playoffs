@@ -1,0 +1,36 @@
+<div class="flex-column" style="height: 100%; align-items: stretch;">
+	<div class="flex-column center-container" style="margin-top: 20px;">
+		<h2>{{ type === LeaderboardType.bottom ? 'Poopy Toilet Bowl Leaderboard' : type === LeaderboardType.top ? 'Playoff Leaderboard' : 'Full Leaderboard'}}</h2>
+		<div class="flex-row center-container">
+			<button mat-flat-button (click)="gotoHome()" style="margin: 10px;">
+				<mat-icon>chevron_left</mat-icon>
+				Back To Home
+			</button>
+			<button mat-flat-button (click)="getMatchupData()" class="secondary-button" style="margin: 10px;">
+				<mat-icon>refresh</mat-icon>
+				Refresh
+			</button>
+		</div>
+	</div>
+	<div class="flex-fill" style="margin-top: 25px;" *ngIf="!loading">
+		<div class="fill-container flex-column" style="align-items: center;">
+			<div class="flex-column" style="min-width: 25vw; align-items: stretch;">
+				<mat-card *ngFor="let user of (users ?? []); let index = index">
+					<mat-card-header>
+						<mat-card-title>{{ index+1 }}: {{ user.metadata?.team_name ?? user.display_name }}</mat-card-title>
+						<mat-card-subtitle>{{ user.totalPoints ?? 0 }} Total Points</mat-card-subtitle>
+					</mat-card-header>
+					<div class="flex-column" style="align-items: flex-start;">
+						<div class="flex-row" *ngFor="let matchupObj of (user.matchupData ?? [])">
+							<mat-label style="margin: 10px 10px 10px 50px;">Week {{matchupObj.week}}: {{ matchupObj.matchup.custom_points ?? matchupObj.matchup.points }}</mat-label>
+						</div>
+					</div>
+				</mat-card>
+			</div>
+		</div>
+	</div>
+	
+	<div class="flex-row center-container" *ngIf="loading">
+		<mat-spinner style="margin-top: 10vh;"></mat-spinner>
+	</div>
+</div>

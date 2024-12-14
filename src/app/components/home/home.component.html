@@ -1,0 +1,24 @@
+<div class="flex-column" style="height: 100%;">
+	<div class="flex-row center-container" style="margin-top: 20px;">
+		<h2 style="text-align: center;">Boardwalk Butt Chuggers Leaderboards</h2>
+	</div>
+	<div class="flex-row" style="margin-top: 50px;">
+		<div class="flex-row" style="flex: 1; margin-right: 15px; justify-content: flex-end;">
+			<button mat-flat-button color="secondary" (click)="gotoLeaderboard(LeaderboardType.top)" class="secondary-button">
+				<mat-icon>emoji_events</mat-icon>
+				Playoffs
+			</button>
+		</div>
+		<div class="flex-row" style="flex: 1; margin-left: 15px; justify-content: flex-start;">
+			<button mat-flat-button color="tertiary" (click)="gotoLeaderboard(LeaderboardType.bottom)">
+				<mat-icon>thumb_down</mat-icon>
+				Poopy Toilet Bowl
+			</button>
+		</div>
+	</div>
+	<div class="flex-row center-container" style="margin-top: 20px;">
+		<button mat-flat-button color="warn" (click)="gotoLeaderboard(LeaderboardType.all)">
+			All Players
+		</button>
+	</div>
+</div>
