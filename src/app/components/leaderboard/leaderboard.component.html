@@ -1,5 +1,5 @@
 <div class="flex-column" style="height: 100%; align-items: stretch;">
-	<div class="flex-column center-container" style="margin-top: 20px;">
+	<div class="flex-column center-container" style="margin-top: 10px;">
 		<h2>{{ type === LeaderboardType.bottom ? 'Poopy Toilet Bowl Leaderboard' : type === LeaderboardType.top ? 'Playoff Leaderboard' : 'Full Leaderboard'}}</h2>
 		<div class="flex-row center-container">
 			<button mat-flat-button (click)="gotoHome()" style="margin: 10px;">
@@ -12,10 +12,10 @@
 			</button>
 		</div>
 	</div>
-	<div class="flex-fill" style="margin-top: 25px;" *ngIf="!loading">
-		<div class="fill-container flex-column" style="align-items: center;">
-			<div class="flex-column" style="min-width: 25vw; align-items: stretch;">
-				<mat-card *ngFor="let user of (users ?? []); let index = index">
+	<div class="flex-fill" style="margin-top: 10px;" *ngIf="!loading">
+		<div class="fill-container flex-column" style="align-items: stretch;">
+			<div class="flex-row" style="justify-content: center;" *ngFor="let user of (users ?? []); let index = index">
+				<mat-card>
 					<mat-card-header>
 						<mat-card-title>{{ index+1 }}: {{ user.metadata?.team_name ?? user.display_name }}</mat-card-title>
 						<mat-card-subtitle>{{ user.totalPoints ?? 0 }} Total Points</mat-card-subtitle>
