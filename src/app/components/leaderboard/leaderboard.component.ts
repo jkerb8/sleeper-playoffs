@@ -77,7 +77,6 @@ export class LeaderboardComponent implements OnInit {
         _.forEach(playoffWeeks, (week, index) => {
           const weekMatchups: Matchup[] = matchupArray[index];
           _.forEach(this.users, user => {
-            user.matchupData ??= [];
             if (user?.roster?.roster_id) {
               const matchup = _.find(weekMatchups, {roster_id: user.roster?.roster_id});
               if (matchup) user.matchupData.push({week, matchup});
@@ -89,7 +88,6 @@ export class LeaderboardComponent implements OnInit {
       _.forEach(this.users, user => {
         user.totalPoints = 0;
         _.forEach(user.matchupData ?? [], matchupObj => {
-          user.totalPoints ??= 0;
           user.totalPoints += (matchupObj.matchup.custom_points ?? matchupObj.matchup.points ?? 0);
         });
       });
