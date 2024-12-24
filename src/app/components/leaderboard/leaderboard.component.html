@@ -18,11 +18,11 @@
 				<mat-card>
 					<mat-card-header>
 						<mat-card-title>{{ index+1 }}: {{ user.metadata?.team_name ?? user.display_name }}</mat-card-title>
-						<mat-card-subtitle>{{ user.totalPoints ?? 0 }} Total Points</mat-card-subtitle>
+						<mat-card-subtitle>{{ (user.totalPoints ?? 0).toFixed(2) }} Total Points</mat-card-subtitle>
 					</mat-card-header>
 					<div class="flex-column" style="align-items: flex-start;">
 						<div class="flex-row" *ngFor="let matchupObj of (user.matchupData ?? [])">
-							<mat-label style="margin: 10px 10px 10px 50px;">Week {{matchupObj.week}}: {{ matchupObj.matchup.custom_points ?? matchupObj.matchup.points }}</mat-label>
+							<mat-label style="margin: 10px 10px 10px 50px;">Week {{matchupObj.week}}: {{ (matchupObj.matchup.custom_points ?? matchupObj.matchup.points ?? 0).toFixed(2) }}</mat-label>
 						</div>
 					</div>
 				</mat-card>
